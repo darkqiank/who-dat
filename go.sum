@@ -1,5 +1,5 @@
-github.com/darkqiank/whois v0.1.0 h1:w52ajNCQe7jjV03sE0AKFLva6iiJmZsYYRIPrPnghXo=
-github.com/darkqiank/whois v0.1.0/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
+github.com/darkqiank/whois v0.2.0 h1:jjFF2DDmD+dMd6NH3nLNF8oxCMLv1qdXJ7p820grTps=
+github.com/darkqiank/whois v0.2.0/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
 github.com/darkqiank/whois-parser v0.1.0 h1:h8Ko2zQbl71JUrDnUBsMzWkqS3rNhP3mC2rynn9/dJI=
 github.com/darkqiank/whois-parser v0.1.0/go.mod h1:RrDE9p7hayXdG2s8lnQtBtnfapVX/ZSBYZS9i5m8x/0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -9,13 +9,6 @@ github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnr
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/likexian/gokit v0.25.13 h1:p2Uw3+6fGG53CwdU2Dz0T6bOycdb2+bAFAa3ymwWVkM=
 github.com/likexian/gokit v0.25.13/go.mod h1:qQhEWFBEfqLCO3/vOEo2EDKd+EycekVtUK4tex+l2H4=
-github.com/likexian/whois v1.15.1 h1:6vTMI8n9s1eJdmcO4R9h1x99aQWIZZX1CD3am68gApU=
-github.com/likexian/whois v1.15.1/go.mod h1:/nxmQ6YXvLz+qTxC/QFtEJNAt0zLuRxJrKiWpBJX8X0=
-github.com/likexian/whois-parser v1.24.10/go.mod h1:b6STMHHDaSKbd4PzGrP50wWE5NzeBUETa/hT9gI0G9I=
-github.com/likexian/whois-parser v1.24.11 h1:U9hs+TX+eUnJTj1LPRc3HVHmuVRC0tKTGDhiTAqrCdA=
-github.com/likexian/whois-parser v1.24.11/go.mod h1:b6STMHHDaSKbd4PzGrP50wWE5NzeBUETa/hT9gI0G9I=
-github.com/lissy93/who-dat v0.0.0-20240324020206-3fa4bec6f616 h1:PZylFwjNcAsMw2/Gdg80rQhC82E/CYOZvkllPtqKwa8=
-github.com/lissy93/who-dat v0.0.0-20240324020206-3fa4bec6f616/go.mod h1:M7g3jP1qjke/EMYjBEua5hcZgzSmg+unPsr0sE3cyCg=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd h1:TRLaZ9cD/w8PVh93nsPXa1VrQ6jlwL5oN8l14QlcNfg=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=

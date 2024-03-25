@@ -1,16 +1,14 @@
 package lib
 
 import (
-	"time"
-
 	whois "github.com/darkqiank/whois"
 	whoisparser "github.com/darkqiank/whois-parser"
 )
 
 // GetWhois does a WHOIS lookup for a supplied domain
 func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
-	whois.DefaultClient.SetTimeout(5 * time.Second)
-	raw, err := whois.Whois(domain)
+	c := whois.NewClient()
+	raw, err := c.Whois(domain)
 	if err != nil {
 		return whoisparser.WhoisInfo{}, err
 	}
