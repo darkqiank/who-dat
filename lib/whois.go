@@ -9,7 +9,7 @@ import (
 
 // GetWhois does a WHOIS lookup for a supplied domain
 func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
-	whois.DefaultClient.SetTimeout(10 * time.Second)
+	whois.DefaultClient.SetTimeout(5 * time.Second)
 	raw, err := whois.Whois(domain)
 	if err != nil {
 		return whoisparser.WhoisInfo{}, err
