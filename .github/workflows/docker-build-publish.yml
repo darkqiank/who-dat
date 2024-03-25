@@ -27,4 +27,4 @@ jobs:
         with:
           context: "{{defaultContext}}"  # Docker 构建上下文目录
           push: true
-          tags: darkqiank/whois:latest  # 替换为您的 Docker Hub 用户名和镜像名称
+          tags: darkqiank/whois-dat:latest  # 替换为您的 Docker Hub 用户名和镜像名称
