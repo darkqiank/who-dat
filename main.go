@@ -21,7 +21,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Create a file server for the sub-directory filesystem
+	// Create a file erver for the sub-directory filesystem
 	embeddedServer := http.FileServer(http.FS(subFS))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
