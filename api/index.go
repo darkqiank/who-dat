@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/darkqiank/who-dat/lib"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/lissy93/who-dat/lib"
 )
 
 // MainHandler handles Whois info for a single domain

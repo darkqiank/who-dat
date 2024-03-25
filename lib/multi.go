@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/likexian/whois"
-	whoisparser "github.com/likexian/whois-parser"
+	"github.com/darkqiank/whois"
+	whoisparser "github.com/darkqiank/whois-parser"
 )
 
 func GetMultiWhois(ctx context.Context, domains []string) ([]whoisparser.WhoisInfo, error) {

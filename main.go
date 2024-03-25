@@ -9,10 +9,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/lissy93/who-dat/api"
+	"github.com/darkqiank/who-dat/api"
 )
 
-//go:embed dist/*
 var staticAssets embed.FS
 
 func main() {
