@@ -16,20 +16,26 @@
 - [API Usage](#api-usage)
   - [Base URL](#base-url)
   - [Endpoints](#endpoints)
-    - [Single Domain](#single-domain-lookup-domain)
-    - [Bulk Domains](#multiple-domain-lookup-multi)
+      - [Command Line](#command-line)
+      - [JavaScript](#javascript)
+      - [Python](#python)
 - [Deployment](#deployment)
-  - [Option 1: Vercel](#option-1-vercel)
-  - [Option 2: Docker](#option-2-docker)
-  - [Option 3: Binary](#option-3-binary)
-  - [Option 4: Build from Source](#option-4-build-from-source)
+    - [Option 1: Vercel](#option-1-vercel)
+    - [Option 2: Docker](#option-2-docker)
+    - [Option 3: Binary](#option-3-binary)
+    - [Option 4: Build from Source](#option-4-build-from-source)
 - [Development](#development)
-- [Contributing](#contributing)
 - [Web Interface](#web-interface)
+- [Contributing](#contributing)
 - [Mirror](#mirror)
 - [Credits](#credits)
+      - [Inspiration](#inspiration)
+      - [Tech Credits](#tech-credits)
+      - [Contributors](#contributors)
+      - [Sponsors](#sponsors)
 - [More Like This](#more-like-this)
 - [License](#license)
+        - [References](#references)
 
 </details>
 
@@ -43,7 +49,7 @@ For detailed request + response schemas, and to try the API out, you can referen
 
 The base URL for the public API is [`who-dat.as93.net`](https://who-dat.as93.net)
 
-If you're self-hosting (recommended) then replace this with your own base URL.
+If you're self-hosting (recommended) then replace this with your own base URL..
 
 ### Endpoints
 
