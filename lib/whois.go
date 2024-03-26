@@ -9,16 +9,16 @@ import (
 func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
 	c := whois.NewClient()
 	raw, err := c.Whois(domain)
-	if err != nil {
-		return whoisparser.WhoisInfo{}, err
+	// if err != nil {
+	// 	return whoisparser.WhoisInfo{}, err
+	// }
+
+	result, err1 := whoisparser.Parse(raw)
+	if err1 != nil {
+		return whoisparser.WhoisInfo{}, err1
 	}
 
-	result, err := whoisparser.Parse(raw)
-	if err != nil {
-		return whoisparser.WhoisInfo{}, err
-	}
-
-	return result, nil
+	return result, err
 }
 
 // GetChanWhois sends Whois data to a channel

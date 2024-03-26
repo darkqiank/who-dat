@@ -2,6 +2,8 @@ github.com/darkqiank/whois v0.2.0 h1:jjFF2DDmD+dMd6NH3nLNF8oxCMLv1qdXJ7p820grTps
 github.com/darkqiank/whois v0.2.0/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
 github.com/darkqiank/whois v0.2.1 h1:vKZ8oMEpAhqP4eV22dmcKHiQ7Dq7W0aVFeYd9la4Buw=
 github.com/darkqiank/whois v0.2.1/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
+github.com/darkqiank/whois v0.2.2 h1:TBmVV1hIOPfncSp5L2HdrLehrv9YCcu/skJVe2dbTDk=
+github.com/darkqiank/whois v0.2.2/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
 github.com/darkqiank/whois-parser v0.1.0 h1:h8Ko2zQbl71JUrDnUBsMzWkqS3rNhP3mC2rynn9/dJI=
 github.com/darkqiank/whois-parser v0.1.0/go.mod h1:RrDE9p7hayXdG2s8lnQtBtnfapVX/ZSBYZS9i5m8x/0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
