@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	// github.com/likexian/whois v1.15.1
-	github.com/darkqiank/whois v0.2.2
+	github.com/darkqiank/whois v0.2.3
 	github.com/darkqiank/whois-parser v0.1.0
 	github.com/json-iterator/go v1.1.12
 )
