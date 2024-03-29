@@ -3,11 +3,13 @@ package lib
 import (
 	whois "github.com/darkqiank/whois"
 	whoisparser "github.com/darkqiank/whois-parser"
+	"golang.org/x/net/proxy"
 )
 
 // GetWhois does a WHOIS lookup for a supplied domain
 func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
-	c := whois.NewClient()
+	c := whois.NewClient().SetDialer(proxy.FromEnvironment())
+	// c.SetDialer(proxy.FromEnvironment())
 	raw, err := c.Whois(domain)
 	// if err != nil {
 	// 	return whoisparser.WhoisInfo{}, err
@@ -23,7 +25,10 @@ func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
 
 // GetChanWhois sends Whois data to a channel
 func GetChanWhois(domain string, whoisCh chan<- whoisparser.WhoisInfo, errorCh chan<- error) {
-	raw, err := whois.Whois(domain)
+	c := whois.NewClient()
+	c.SetDialer(proxy.FromEnvironment())
+	// raw, err := whois.Whois(domain)
+	raw, err := c.Whois(domain)
 	if err != nil {
 		// return whoisparser.WhoisInfo{}, err
 		whoisCh <- whoisparser.WhoisInfo{}

@@ -8,6 +8,7 @@ import (
 
 	"github.com/darkqiank/whois"
 	whoisparser "github.com/darkqiank/whois-parser"
+	"golang.org/x/net/proxy"
 )
 
 func GetMultiWhois(ctx context.Context, domains []string) ([]whoisparser.WhoisInfo, error) {
@@ -45,11 +46,14 @@ func getChanWhois(ctx context.Context, domain string, whoisCh chan<- whoisparser
 	case <-ctx.Done():
 		errorCh <- ctx.Err()
 		return
-	case <-time.After(2 * time.Second): // Timeout for each WHOIS lookup
+	case <-time.After(30 * time.Second): // Timeout for each WHOIS lookup
 		errorCh <- fmt.Errorf("Lookup timed out after 2 seconds")
 		return
 	default:
-		raw, err := whois.Whois(domain)
+		// raw, err := whois.Whois(domain)
+		c := whois.NewClient()
+		c.SetDialer(proxy.FromEnvironment())
+		raw, err := c.Whois(domain)
 		if err != nil {
 			errorCh <- err
 			return

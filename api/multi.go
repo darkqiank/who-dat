@@ -27,7 +27,7 @@ func MultiHandler(w http.ResponseWriter, r *http.Request) {
 	domains := strings.Split(domainsQuery, ",")
 
 	// Set up a timeout context
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
 	// Get Whois data for all domains
