@@ -1,7 +1,6 @@
 package main
 
 import (
-	"embed"
 	"fmt"
 	"log"
 	"os"
@@ -9,8 +8,6 @@ import (
 	"github.com/darkqiank/who-dat/api"
 	"github.com/valyala/fasthttp"
 )
-
-var staticAssets embed.FS
 
 func main() {
 
