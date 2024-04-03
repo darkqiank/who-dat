@@ -2,11 +2,11 @@ package api
 
 import (
 	"fmt"
-	"net/http"
 	"strings"
 
 	"github.com/darkqiank/who-dat/lib"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/valyala/fasthttp"
 )
 
 type Response struct {
@@ -15,7 +15,7 @@ type Response struct {
 	Error   string      `json:"error,omitempty"`
 }
 
-func sendJSONResponse(w http.ResponseWriter, statusCode int, data interface{}, err error) {
+func sendJSONResponse(ctx *fasthttp.RequestCtx, statusCode int, data interface{}, err error) {
 	response := Response{
 		Success: err == nil,
 	}
@@ -28,31 +28,35 @@ func sendJSONResponse(w http.ResponseWriter, statusCode int, data interface{}, e
 	// Convert response to JSON
 	jsonResponse, jsonErr := jsoniter.Marshal(response)
 	if jsonErr != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		fmt.Fprintf(w, `{"success": false, "error": "Error marshalling response JSON"}`)
+		ctx.SetStatusCode(fasthttp.StatusInternalServerError)
+		ctx.SetContentType("application/json")
+		fmt.Fprintf(ctx, `{"success": false, "error": "Error marshalling response JSON"}`)
 		return
 	}
 
 	// Set content type and status code
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
+	ctx.SetContentType("application/json")
+	ctx.SetStatusCode(statusCode)
 
 	// Send the response
-	w.Write(jsonResponse)
+	ctx.Write(jsonResponse)
 }
 
 // MainHandler handles Whois info for a single domain
-func MainHandler(w http.ResponseWriter, r *http.Request) {
+func MainHandler(ctx *fasthttp.RequestCtx) {
 	// Make sure it's a GET request
-	if r.Method != http.MethodGet {
-		sendJSONResponse(w, http.StatusMethodNotAllowed, nil, fmt.Errorf("please use a GET request"))
+	if !ctx.IsGet() {
+		sendJSONResponse(ctx, fasthttp.StatusMethodNotAllowed, nil, fmt.Errorf("please use a GET request"))
 		return
 	}
 
 	// Extract domain from URL path
-	path := strings.TrimPrefix(r.URL.Path, "/")
+	path := string(ctx.Path())
+	path = strings.TrimPrefix(path, "/")
+
+	// Extract domain from URL path
 	if path == "" {
-		sendJSONResponse(w, http.StatusBadRequest, nil, fmt.Errorf("domain not specified"))
+		sendJSONResponse(ctx, fasthttp.StatusBadRequest, nil, fmt.Errorf("domain not specified"))
 		return
 	}
 
@@ -67,23 +71,23 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Make sure path is not empty after trimming "ref/"
 	if path == "" {
-		sendJSONResponse(w, http.StatusBadRequest, nil, fmt.Errorf("domain not specified"))
+		sendJSONResponse(ctx, fasthttp.StatusBadRequest, nil, fmt.Errorf("domain not specified"))
 		return
 	}
 
 	// Get Whois data
 	whois, err := lib.GetWhois(path, disableReferral)
 	if err != nil {
-		sendJSONResponse(w, http.StatusInternalServerError, whois, err)
+		sendJSONResponse(ctx, fasthttp.StatusInternalServerError, whois, err)
 		return
 	}
 
 	// Get EMPTY data
 	if whois.Domain == nil {
-		sendJSONResponse(w, http.StatusNotFound, nil, fmt.Errorf("WHOIS DATA EMPTY"))
+		sendJSONResponse(ctx, fasthttp.StatusNotFound, nil, fmt.Errorf("WHOIS DATA EMPTY"))
 		return
 	}
 
 	// Success response
-	sendJSONResponse(w, http.StatusOK, whois, nil)
+	sendJSONResponse(ctx, fasthttp.StatusOK, whois, nil)
 }

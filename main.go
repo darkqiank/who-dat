@@ -3,55 +3,22 @@ package main
 import (
 	"embed"
 	"fmt"
-	"io/fs"
 	"log"
-	"net/http"
 	"os"
-	"strings"
 
 	"github.com/darkqiank/who-dat/api"
+	"github.com/valyala/fasthttp"
 )
 
 var staticAssets embed.FS
 
 func main() {
-	// Create a sub-directory filesystem from the embedded files
-	subFS, err := fs.Sub(staticAssets, "dist")
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	// Create a file erver for the sub-directory filesystem
-	embeddedServer := http.FileServer(http.FS(subFS))
-
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		path := strings.TrimPrefix(r.URL.Path, "/")
-
-		if path == "docs" {
-			http.ServeFile(w, r, "dist/docs.html")
-			return
-		}
-
-		// Serve embedded static files for the root
-		if path == "" {
-			embeddedServer.ServeHTTP(w, r)
-			return
-		}
-
-		// Serve embedded static files if path starts with "assets"
-		if strings.HasPrefix(path, "assets") {
-			embeddedServer.ServeHTTP(w, r)
-			return
-		}
-
+	// Custom request handler for fasthttp
+	requestHandler := func(ctx *fasthttp.RequestCtx) {
 		// Handle API requests
-		// Check if it's a domain lookup or a multi-domain lookup
-		if path == "multi" {
-			api.MultiHandler(w, r)
-		} else {
-			api.MainHandler(w, r)
-		}
-	})
+		api.MainHandler(ctx)
+	}
 
 	// Choose the port to start server on
 	port := os.Getenv("PORT")
@@ -71,5 +38,10 @@ __          ___             _____        _  ___
 `
 	log.Println(asciiArt)
 	log.Printf("\nWelcome to Who-Dat - WHOIS Lookup Service.\nApp up and running at %s", serverAddress)
-	log.Fatal(http.ListenAndServe(serverAddress, nil))
+
+	// Start fasthttp server
+	if err := fasthttp.ListenAndServe(serverAddress, requestHandler); err != nil {
+		log.Fatalf("Error in ListenAndServe: %s", err)
+	}
+
 }
