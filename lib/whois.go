@@ -7,8 +7,9 @@ import (
 )
 
 // GetWhois does a WHOIS lookup for a supplied domain
-func GetWhois(domain string) (whoisparser.WhoisInfo, error) {
+func GetWhois(domain string, disableReferral bool) (whoisparser.WhoisInfo, error) {
 	c := whois.NewClient().SetDialer(proxy.FromEnvironment())
+	c.SetDisableReferral(disableReferral)
 	// c.SetDialer(proxy.FromEnvironment())
 	raw, err := c.Whois(domain)
 	// if err != nil {

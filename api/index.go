@@ -56,8 +56,23 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Initialize disableReferral as true
+	disableReferral := true
+
+	// Check if path starts with "ref/" and adjust accordingly
+	if strings.HasPrefix(path, "ref/") {
+		disableReferral = false
+		path = strings.TrimPrefix(path, "ref/")
+	}
+
+	// Make sure path is not empty after trimming "ref/"
+	if path == "" {
+		sendJSONResponse(w, http.StatusBadRequest, nil, fmt.Errorf("domain not specified"))
+		return
+	}
+
 	// Get Whois data
-	whois, err := lib.GetWhois(path)
+	whois, err := lib.GetWhois(path, disableReferral)
 	if err != nil {
 		sendJSONResponse(w, http.StatusInternalServerError, whois, err)
 		return
