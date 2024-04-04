@@ -1,0 +1,64 @@
+name: Go Build and Release
+
+on:
+  push:
+    branches:
+      - main # 或者你用于开发的分支
+    tags:
+      - 'v*' # 此行确保只有推送标记时才运行部署和发布步骤
+
+jobs:
+  build:
+    name: Build Go Binary
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.20' # 指定Go版本
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build Binary
+        run: |
+          CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o who-dat .
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: who-dat
+          path: who-dat
+
+  release:
+    name: Release
+    needs: build # 依赖于构建步骤
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') # 仅当推送标记时运行
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: who-dat
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./who-dat
+          asset_name: who-dat
+          asset_content_type: application/octet-stream

@@ -4,13 +4,13 @@ go 1.20
 
 require (
 	// github.com/likexian/whois v1.15.1
-	github.com/darkqiank/whois v0.3.0
+	github.com/darkqiank/whois v0.4.1
 	github.com/darkqiank/whois-parser v0.1.0
 	github.com/json-iterator/go v1.1.12
 	github.com/valyala/fasthttp v1.52.0
 )
 
-require golang.org/x/net v0.22.0
+require golang.org/x/net v0.23.0
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect

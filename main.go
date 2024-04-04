@@ -1,15 +1,24 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/darkqiank/who-dat/api"
+	"github.com/darkqiank/whois"
 	"github.com/valyala/fasthttp"
 )
 
 func main() {
+
+	// 定义命令行参数
+	// 第一个参数是命令行标志的名字，第二个参数是默认值，第三个参数是使用说明
+	serversPath := flag.String("s", "", "Path to the servers file.")
+	// 解析命令行参数
+	flag.Parse()
+	whois.Init(*serversPath)
 
 	// Custom request handler for fasthttp
 	requestHandler := func(ctx *fasthttp.RequestCtx) {

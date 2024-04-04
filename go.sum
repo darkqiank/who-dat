@@ -10,6 +10,8 @@ github.com/darkqiank/whois v0.2.3 h1:Qh5BZN84t98M6Q0yWKFtCihm6omug3rssbFcZGaHbrQ
 github.com/darkqiank/whois v0.2.3/go.mod h1:LVyXO5P5AUs5hHmkpsE2EO3C7N8WthfXiwPgv9HBDfA=
 github.com/darkqiank/whois v0.3.0 h1:ZpuUUsb1z/Vsor/ZkscruXPckQJSvUb9haq0rELFQmc=
 github.com/darkqiank/whois v0.3.0/go.mod h1:I3eby73hzlzpS1OX8qc/JKAo18dXCPlsM4UjHhSUGXM=
+github.com/darkqiank/whois v0.4.1 h1:HDyR4urY3c2kzPZZ2NGYlIh9b29pZVQSazNHNcOyyFI=
+github.com/darkqiank/whois v0.4.1/go.mod h1:I3eby73hzlzpS1OX8qc/JKAo18dXCPlsM4UjHhSUGXM=
 github.com/darkqiank/whois-parser v0.1.0 h1:h8Ko2zQbl71JUrDnUBsMzWkqS3rNhP3mC2rynn9/dJI=
 github.com/darkqiank/whois-parser v0.1.0/go.mod h1:RrDE9p7hayXdG2s8lnQtBtnfapVX/ZSBYZS9i5m8x/0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -37,5 +39,7 @@ github.com/valyala/fasthttp v1.52.0 h1:wqBQpxH71XW0e2g+Og4dzQM8pk34aFYlA1Ga8db7g
 github.com/valyala/fasthttp v1.52.0/go.mod h1:hf5C4QnVMkNXMspnsUlfM3WitlgYflyhHYoKol/szxQ=
 golang.org/x/net v0.22.0 h1:9sGLhx7iRIHEiX0oAJ3MRZMUCElJgy7Br1nO+AMN3Tc=
 golang.org/x/net v0.22.0/go.mod h1:JKghWKKOSdJwpW2GEx0Ja7fmaKnMsbu+MWVZTokSYmg=
+golang.org/x/net v0.23.0 h1:7EYJ93RZ9vYSZAIb2x3lnuvqO5zneoD6IvWjuhfxjTs=
+golang.org/x/net v0.23.0/go.mod h1:JKghWKKOSdJwpW2GEx0Ja7fmaKnMsbu+MWVZTokSYmg=
 golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=
 golang.org/x/text v0.14.0/go.mod h1:18ZOQIKpY8NJVqYksKHtTdi31H5itFRjB5/qKTNYzSU=
